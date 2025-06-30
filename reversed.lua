@@ -38,10 +38,10 @@ local em = {
     },
     misc = {
         kill_say = {
-            list = {"而作为临时工和兼职人员权利拥护者的sakura先生则强调他们应该同工同酬。", "cant hit me :3", "Sakura-yaw just made you gay", "turn on desync next time :3", "get sakura setts @ gg/gjZR4TWZPy", "Sakura inv in morse: --. . -       ... .- -.- ..- .-. .-       -.-- .- .--       -. --- .--       ---... ...--", "1tap ft. Sakura-yaw" }
+            list = {"而作为临时工和兼职人员权利拥护者的reversed先生则强调他们应该同工同酬。", "cant hit me :3", "ReversedSource-yaw just made you gay", "turn on desync next time :3", "get ReversedSource setts @ gg/Reversed", "1tap ft. ReversedSource-yaw" }
         },
         clantag = {
-            tag = {" ", "S", "Sa", "Sa", "Sak", "Saku", "Sakur", "Sakur", "Sakura", "Sakura.", "Sakura.t", "Sakura.te", "Sakura.tec", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech ", "Sakura.tech "},
+            tag = {" ", "R", "Re", "Re", "Rev", "Reve", "Rever", "Rever", "Revers", "Reverse", "Reversed", "ReversedSo", "ReversedSou", "ReversedSour ", "ReversedSourc ", "ReversedSource ", "ReversedSource ", "ReversedSource ", "ReversedSource ", "ReversedSource ", "ReversedSource ", "ReversedSource "},
             index = 1,
             last = 0,
             back = false
@@ -143,7 +143,7 @@ local em = {
 }
 
 function em.visuals.panels:init_from_database()
-    local data = database.read("😍Sakura🤪") or {}
+    local data = database.read("😍ReversedSource🤪") or {}
 
     if data.loc == nil then
         return
@@ -163,7 +163,7 @@ em.ui.meta_elements.__index = em.ui.meta_elements
 -- Roger UI Library
 em.ui.new = function(uid, item)
     
-    if item == nil then print("[Sakura] Item cannot be nil") return end
+    if item == nil then print("[Reversed] Item cannot be nil") return end
 
     local element = setmetatable({uid = uid, item = item, callback = function() end, conditions = {} }, em.ui.meta_elements)
 
@@ -190,7 +190,7 @@ end
 
 function em.ui.meta_elements:add_condition(condition)
     if type(condition) ~= "function" then
-        print("[Sakura] Condition must be a function")
+        print("[Reversed] Condition must be a function")
         return
     end
 
@@ -201,7 +201,7 @@ end
 
 function em.ui.meta_elements:set_callback(callback)
     if type(callback) ~= "function" then
-        print("[Sakura] Callback must be a function")
+        print("[Reversed] Callback must be a function")
         return
     end
     self.callback = callback
@@ -393,7 +393,7 @@ local refs = {
 }
 
 function em:save_database()
-    local data = database.read("😍Sakura🤪") or {}
+    local data = database.read("😍ReversedSource🤪") or {}
 
     if data.loc == nil then
         data.loc = {}
@@ -404,7 +404,7 @@ function em:save_database()
     data.loc.keybinds = { x = keybinds.x, y = keybinds.y }
     data.loc.spectators = { x = spectators.x, y = spectators.y }
 
-    database.write("😍Sakura🤪", data)
+    database.write("😍ReversedSource🤪", data)
 end
 
 -- Sakura Utils
@@ -542,13 +542,13 @@ function em.util:handle_state(cmd)
 end
 
 -- Sakura Menu Items
-em.ui.master = em.ui.new(nil, ui.new_checkbox("aa", "anti-aimbot angles", "[\ac685ffffSakura\aCDCDCDFF] Enabled")):set_callback(function(val)
+em.ui.master = em.ui.new(nil, ui.new_checkbox("aa", "anti-aimbot angles", "[\ac685ffffReversed\aCDCDCDFF] Enabled")):set_callback(function(val)
     if ui.get(val) then
         ui.set(refs.aa.master, true)
     end
 end)
 
-em.ui.tab = em.ui.master:combo(nil, "aa", "anti-aimbot angles", "\n[\ac685ffffSakura\aCDCDCDFF] Tab", {"\ac685ffffAntiaim", "\ac685ffffVisuals", "\ac685ffffMisc", "\ac685ffffRage"})
+em.ui.tab = em.ui.master:combo(nil, "aa", "anti-aimbot angles", "\n[\ac685ffffReversed\aCDCDCDFF] Tab", {"\ac685ffffAntiaim", "\ac685ffffVisuals", "\ac685ffffMisc", "\ac685ffffRage"})
 
 em.ui.aa.state = em.ui.master:combo(nil, "aa", "anti-aimbot angles", "[\ac685ffffAntiaim\aCDCDCDFF] State", em.aa.states):add_condition(function()
     return em.ui.tab:get():find("Antiaim")
@@ -606,7 +606,7 @@ em.ui.aa.load_default = em.ui.master:button("aa", "anti-aimbot angles", "\ac685f
     return em.ui.tab:get():find("Antiaim")
 end)
 
-em.ui.visuals.indicator_type = em.ui.master:combo(nil, "aa", "anti-aimbot angles", "[\ac685ffffIndicators\aCDCDCDFF] Indicators", {"Disabled", "Sakura", "Ideal Yaw", "Old Chimera", "Prediction"}):add_condition(function()
+em.ui.visuals.indicator_type = em.ui.master:combo(nil, "aa", "anti-aimbot angles", "[\ac685ffffIndicators\aCDCDCDFF] Indicators", {"Disabled", "Reversed", "Ideal Yaw", "Old Chimera", "Prediction"}):add_condition(function()
     return em.ui.tab:get():find("Visuals")
 end)
 
@@ -641,11 +641,11 @@ em.ui.misc.kill_say = em.ui.master:checkbox(nil, "aa", "anti-aimbot angles", "[\
     return em.ui.tab:get():find("Misc")
 end)
 
-em.ui.rage.resolver = em.ui.master:hotkey(nil, "aa", "anti-aimbot angles", "[\ac685ffffRage\aCDCDCDFF] Sakura Resolver v1"):add_condition(function()
+em.ui.rage.resolver = em.ui.master:hotkey(nil, "aa", "anti-aimbot angles", "[\ac685ffffRage\aCDCDCDFF] Reversed Resolver v1"):add_condition(function()
     return em.ui.tab:get():find("Rage")
 end)
 
-em.ui.rage.roll_resolver = em.ui.master:hotkey(nil, "aa", "anti-aimbot angles", "[\ac685ffffRage\aCDCDCDFF] Sakura Roll Resolver v1"):add_condition(function()
+em.ui.rage.roll_resolver = em.ui.master:hotkey(nil, "aa", "anti-aimbot angles", "[\ac685ffffRage\aCDCDCDFF] Reversed Roll Resolver v1"):add_condition(function()
     return em.ui.tab:get():find("Rage")
 end)
 
@@ -869,9 +869,9 @@ function em.visuals.indicators:render()
         fatality_charge = "\a" .. em.util:to_hex(self.fatality.exploit.col.r, self.fatality.exploit.col.g, self.fatality.exploit.col.b, self.fatality.exploit.col.a),
     }
 
-    if em.ui.visuals.indicator_type:get() == "Sakura" then
+    if em.ui.visuals.indicator_type:get() == "Reversed" then
         local baim, sp, fs = ui.get(refs.rage.baim) and hex.on .. "BAIM  " or hex.off .. "BAIM  ", ui.get(refs.rage.sp) and hex.on .."SAFE" or hex.off .."SAFE", em.ui.aa.freestand_key:get() and hex.on .."  FS" or hex.off .."  FS"
-        local title, binds, exploit = "Sakura " .. hex.main .. "YAW", baim .. sp .. fs, ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.charge .."DT")
+        local title, binds, exploit = "Reversed " .. hex.main .. "YAW", baim .. sp .. fs, ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.charge .."DT")
         local title_size = vector(renderer.measure_text("-c", title))
         local state_size = vector(renderer.measure_text("-c", em.aa.state:upper()))
         local exploit_size = vector(renderer.measure_text("-c", exploit))
@@ -891,7 +891,7 @@ function em.visuals.indicators:render()
     end
     
     if em.ui.visuals.indicator_type:get() == "Ideal Yaw" then
-        local title, mode, exploit = "Sakura TECH", em.ui.aa.freestand_key:get() and "FREESTAND" or "DYNAMIC", ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.off .."DT")
+        local title, mode, exploit = "Reversed Source", em.ui.aa.freestand_key:get() and "FREESTAND" or "DYNAMIC", ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.off .."DT")
         local title_size = vector(renderer.measure_text("", title))
         local mode_size = vector(renderer.measure_text("", mode))
         local exploit_size = vector(renderer.measure_text("", exploit))
@@ -906,7 +906,7 @@ function em.visuals.indicators:render()
     end
 
     if em.ui.visuals.indicator_type:get() == "Old Chimera" then
-        local title, desync, exploit = hex.left .. "Sakura " .. hex.right .. "YAW", tostring(delta) .. "°", ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.charge .."DT")
+        local title, desync, exploit = hex.left .. "Reversed " .. hex.right .. "YAW", tostring(delta) .. "°", ((ui.get(refs.rage.double_tap_key) and ui.get(refs.misc.hide_shots_key)) and hex.charge .."DT" or (ui.get(refs.rage.double_tap_key) and hex.charge .."DT") or (ui.get(refs.misc.hide_shots_key) and "OS") or hex.charge .."DT")
         local title_size = vector(renderer.measure_text("c", title))
         local desync_size = vector(renderer.measure_text("c", desync))
         local exploit_size = vector(renderer.measure_text("c", exploit))
@@ -1287,7 +1287,7 @@ function em.visuals.panels.watermark:render()
     local suffix = hours >= 12 and "PM" or "AM"
     self.username = self.username == "unknown" and entity.get_player_name(entity.get_local_player()) or self.username
 
-	local text = string.format("\a" .. hex .. "Sakura \affffffb3|\affffffff %s \affffffb3| \affffffff%dms \affffffb3| \affffffff%d:%2d %s", self.username, latency, em.util:to12(hours), minutes, suffix)
+	local text = string.format("\a" .. hex .. "Reversed \affffffb3|\affffffff %s \affffffb3| \affffffff%dms \affffffb3| \affffffff%d:%2d %s", self.username, latency, em.util:to12(hours), minutes, suffix)
 
 	local margin, padding = 15, 5
 
